@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kratos · Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #060608;
+  --surface: #0e0e14;
+  --surface2: #14141c;
+  --border: #1c1c28;
+  --border2: #242434;
+  --text: #f0f0f8;
+  --muted: #52526e;
+  --muted2: #3a3a52;
+  --video: #a78bfa;
+  --yt: #f472b6;
+  --forex: #34d399;
+  --ai: #fb923c;
+  --video-bg: #a78bfa14;
+  --yt-bg: #f472b614;
+  --forex-bg: #34d39914;
+  --ai-bg: #fb923c14;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  background: #060608cc;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, var(--video), var(--yt));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+.nav-cv {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.nav-cv:hover {
+  background: var(--border2);
+  border-color: var(--muted2);
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 40px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.3;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black 30%, transparent 100%);
+}
+
+.hero-glow {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(ellipse, #a78bfa18 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.hero-tag::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--muted2);
+}
+
+.hero-name {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(52px, 9vw, 96px);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  margin-bottom: 28px;
+}
+
+.hero-name .line2 {
+  background: linear-gradient(90deg, var(--video) 0%, var(--yt) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+
+.hero-bio {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 520px;
+  margin-bottom: 40px;
+}
+
+.hero-bio strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.hero-tracks {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.track-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 30px;
+  border: 1px solid;
+  letter-spacing: 0.03em;
+}
+
+.tp-v { color: var(--video); border-color: #a78bfa40; background: var(--video-bg); }
+.tp-y { color: var(--yt); border-color: #f472b640; background: var(--yt-bg); }
+.tp-f { color: var(--forex); border-color: #34d39940; background: var(--forex-bg); }
+.tp-a { color: var(--ai); border-color: #fb923c40; background: var(--ai-bg); }
+
+.track-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* SECTIONS */
+.section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  margin-bottom: 10px;
+  font-family: 'Inter', sans-serif;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+  line-height: 1.1;
+}
+
+/* ABOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.about-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.about-card-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.about-card-val {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* MILESTONES */
+.milestones-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.milestones-header .section-title { margin-bottom: 0; }
+
+.add-milestone-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #a78bfa20, #f472b620);
+  border: 1px solid #a78bfa40;
+  color: var(--video);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.add-milestone-btn:hover {
+  background: linear-gradient(135deg, #a78bfa30, #f472b630);
+  border-color: #a78bfa70;
+}
+
+/* Filter tabs */
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.ftab {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.03em;
+}
+
+.ftab:hover { border-color: var(--muted2); color: var(--text); }
+.ftab.active { color: var(--text); background: var(--surface2); border-color: var(--border2); }
+.ftab.active.t-v { color: var(--video); border-color: #a78bfa40; background: var(--video-bg); }
+.ftab.active.t-y { color: var(--yt); border-color: #f472b640; background: var(--yt-bg); }
+.ftab.active.t-f { color: var(--forex); border-color: #34d39940; background: var(--forex-bg); }
+.ftab.active.t-a { color: var(--ai); border-color: #fb923c40; background: var(--ai-bg); }
+
+/* Milestone grid */
+.milestone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  min-height: 200px;
+}
+
+.milestone-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s;
+  position: relative;
+}
+
+.milestone-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border2);
+}
+
+.ms-card-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  background: var(--surface2);
+}
+
+.ms-card-thumb-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--surface2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: var(--muted2);
+}
+
+.ms-card-body {
+  padding: 16px;
+}
+
+.ms-card-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.ms-card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.ms-card-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.ms-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ms-card-date {
+  font-size: 11px;
+  color: var(--muted2);
+}
+
+.ms-card-link {
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.2s;
+}
+
+.ms-card-link:hover { opacity: 0.7; }
+
+.ms-card-delete {
+  position: absolute;
+  top: 8px; right: 8px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: #000000aa;
+  border: 1px solid #ffffff18;
+  color: #ffffff80;
+  font-size: 14px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.milestone-card:hover .ms-card-delete { display: flex; }
+.ms-card-delete:hover { background: #ff000066; color: white; border-color: #ff000080; }
+
+.empty-state {
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: var(--muted2);
+  text-align: center;
+  border: 1px dashed var(--border2);
+  border-radius: 14px;
+}
+
+.empty-state-icon { font-size: 40px; margin-bottom: 14px; }
+.empty-state-text { font-size: 14px; line-height: 1.6; }
+.empty-state-text strong { color: var(--muted); display: block; font-size: 16px; margin-bottom: 4px; }
+
+/* SKILLS */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.skill-bar-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.skill-bar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.skill-name {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.skill-level {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.skill-track {
+  height: 4px;
+  background: var(--border2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1s ease;
+}
+
+/* CONTACT */
+.contact-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.contact-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 20px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.contact-chip:hover {
+  border-color: var(--border2);
+  background: var(--surface2);
+  transform: translateY(-1px);
+}
+
+.contact-chip-icon { font-size: 18px; }
+
+/* MODAL */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: #000000cc;
+  backdrop-filter: blur(8px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 18px;
+  padding: 32px;
+  width: 100%;
+  max-width: 500px;
+  transform: translateY(16px);
+  transition: transform 0.25s;
+}
+
+.modal-backdrop.open .modal {
+  transform: translateY(0);
+}
+
+.modal-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 7px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--video);
+}
+
+.form-select option { background: var(--surface2); }
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-file-area {
+  width: 100%;
+  border: 1px dashed var(--border2);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg);
+  position: relative;
+}
+
+.form-file-area:hover {
+  border-color: var(--video);
+  background: var(--video-bg);
+}
+
+.form-file-area input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.file-area-text { font-size: 13px; color: var(--muted); }
+.file-area-text strong { color: var(--text); display: block; margin-bottom: 3px; }
+
+.file-preview {
+  width: 100%;
+  max-height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-top: 10px;
+  display: none;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.btn-primary {
+  flex: 1;
+  background: linear-gradient(135deg, var(--video), var(--yt));
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover { opacity: 0.85; }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  color: var(--muted);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-ghost:hover {
+  border-color: var(--muted2);
+  color: var(--text);
+}
+
+/* TOAST */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  z-index: 300;
+  transform: translateY(60px);
+  opacity: 0;
+  transition: all 0.3s;
+  pointer-events: none;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* DIVIDER */
+.section-divider {
+  height: 1px;
+  background: var(--border);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+}
+
+.footer-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--video), var(--yt));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-note {
+  font-size: 12px;
+  color: var(--muted2);
+}
+
+@media (max-width: 640px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 100px 20px 60px; }
+  .section { padding: 60px 20px; }
+  .about-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
+  footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+  .milestone-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Kratos.</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#milestones">Milestones</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cv" id="cvDownload" href="#" onclick="downloadCV(event)">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Download CV
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Available for work · Lagos, Nigeria</div>
+    <h1 class="hero-name">
+      Video Editor<br>
+      <span class="line2">&amp; Creator.</span>
+    </h1>
+    <p class="hero-bio">
+      Engineering student turned <strong>content creator and digital builder</strong>.
+      I edit videos, run a YouTube automation channel, and build AI-powered workflows.
+      Currently taking on freelance clients while building long-term income tracks.
+    </p>
+    <div class="hero-tracks">
+      <div class="track-pill tp-v"><div class="track-dot"></div> Video Editing</div>
+      <div class="track-pill tp-y"><div class="track-dot"></div> YouTube Automation</div>
+      <div class="track-pill tp-f"><div class="track-dot"></div> Forex Trading</div>
+      <div class="track-pill tp-a"><div class="track-dot"></div> AI Agents</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-eyebrow">Who I am</div>
+  <h2 class="section-title">Built different,<br>building daily.</h2>
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="about-card-label">Background</div>
+      <div class="about-card-val">Engineering student with a parallel focus on digital content creation, automation, and online income. I treat creative work as seriously as coursework.</div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-label">Current Focus</div>
+      <div class="about-card-val">Freelance video editing, growing a movie recap YouTube channel, learning systematic forex trading, and building AI automations for small businesses.</div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-label">Tools I Use</div>
+      <div class="about-card-val">Capcut · ElevenLabs · TubeBuddy · Make.com · CapCut · Quartus · VS Code</div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-label">What I'm after</div>
+      <div class="about-card-val">Multiple income streams, creative work on my own terms, and skills that compound — not just a job, a career I build myself.</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- MILESTONES -->
+<section class="section" id="milestones">
+  <div class="milestones-header">
+    <div>
+      <div class="section-eyebrow">Portfolio</div>
+      <h2 class="section-title">Milestones &amp;<br>Work samples.</h2>
+    </div>
+    <button class="add-milestone-btn" onclick="openModal()">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      Add Milestone
+    </button>
+  </div>
+
+  <div class="filter-tabs" id="filterTabs">
+    <button class="ftab active" data-filter="all" onclick="setFilter('all', this)">All</button>
+    <button class="ftab t-v" data-filter="video" onclick="setFilter('video', this)">Video Editing</button>
+    <button class="ftab t-y" data-filter="yt" onclick="setFilter('yt', this)">YouTube</button>
+    <button class="ftab t-f" data-filter="forex" onclick="setFilter('forex', this)">Forex</button>
+    <button class="ftab t-a" data-filter="ai" onclick="setFilter('ai', this)">AI Agents</button>
+  </div>
+
+  <div class="milestone-grid" id="milestoneGrid">
+    <!-- populated by JS -->
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="section-eyebrow">Capabilities</div>
+  <h2 class="section-title">What I bring<br>to the table.</h2>
+  <div class="skills-grid">
+    <div class="skill-bar-wrap">
+      <div class="skill-bar-top">
+        <span class="skill-name">Video Editing (Capcut)</span>
+        <span class="skill-level">Growing</span>
+      </div>
+      <div class="skill-track"><div class="skill-fill" style="width:72%; background: var(--video);"></div></div>
+    </div>
+    <div class="skill-bar-wrap">
+      <div class="skill-bar-top">
+        <span class="skill-name">YouTube Content Strategy</span>
+        <span class="skill-level">Growing</span>
+      </div>
+      <div class="skill-track"><div class="skill-fill" style="width:65%; background: var(--yt);"></div></div>
+    </div>
+    <div class="skill-bar-wrap">
+      <div class="skill-bar-top">
+        <span class="skill-name">SEO &amp; TubeBuddy Optimisation</span>
+        <span class="skill-level">Learning</span>
+      </div>
+      <div class="skill-track"><div class="skill-fill" style="width:50%; background: var(--yt);"></div></div>
+    </div>
+    <div class="skill-bar-wrap">
+      <div class="skill-bar-top">
+        <span class="skill-name">Forex Analysis (Price Action)</span>
+        <span class="skill-level">Beginner</span>
+      </div>
+      <div class="skill-track"><div class="skill-fill" style="width:30%; background: var(--forex);"></div></div>
+    </div>
+    <div class="skill-bar-wrap">
+      <div class="skill-bar-top">
+        <span class="skill-name">AI Workflow Automation</span>
+        <span class="skill-level">Learning</span>
+      </div>
+      <div class="skill-track"><div class="skill-fill" style="width:35%; background: var(--ai);"></div></div>
+    </div>
+    <div class="skill-bar-wrap">
+      <div class="skill-bar-top">
+        <span class="skill-name">Web Development</span>
+        <span class="skill-level">Proficient</span>
+      </div>
+      <div class="skill-track"><div class="skill-fill" style="width:70%; background: linear-gradient(90deg, var(--video), var(--yt));"></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-eyebrow">Let's connect</div>
+  <h2 class="section-title">Open to<br>opportunities.</h2>
+  <div class="contact-row">
+    <a class="contact-chip" href="mailto:your@email.com">
+      <span class="contact-chip-icon">✉️</span> your@email.com
+    </a>
+    <a class="contact-chip" href="https://twitter.com/" target="_blank">
+      <span class="contact-chip-icon">𝕏</span> Twitter / X
+    </a>
+    <a class="contact-chip" href="https://youtube.com/" target="_blank">
+      <span class="contact-chip-icon">▶️</span> YouTube Channel
+    </a>
+    <a class="contact-chip" href="https://fiverr.com/" target="_blank">
+      <span class="contact-chip-icon">💼</span> Fiverr
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Kratos.</div>
+  <div class="footer-note">© 2025 · Built while still in school.</div>
+</footer>
+
+<!-- ADD MILESTONE MODAL -->
+<div class="modal-backdrop" id="modalBackdrop" onclick="handleBackdropClick(event)">
+  <div class="modal">
+    <div class="modal-title">Add a Milestone</div>
+
+    <div class="form-group">
+      <label class="form-label">Track</label>
+      <select class="form-select" id="mTrack">
+        <option value="video">Video Editing</option>
+        <option value="yt">YouTube</option>
+        <option value="forex">Forex</option>
+        <option value="ai">AI Agents</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Title</label>
+      <input class="form-input" id="mTitle" type="text" placeholder="e.g. First paid edit, 1K subscribers...">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Description</label>
+      <textarea class="form-textarea" id="mDesc" placeholder="What did you achieve? What did you learn?"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Thumbnail / Screenshot</label>
+      <div class="form-file-area" id="fileArea">
+        <input type="file" accept="image/*" id="mFile" onchange="previewFile(event)">
+        <div class="file-area-text">
+          <strong>Drop an image or click to browse</strong>
+          Screenshots, thumbnails, screenshots from client work
+        </div>
+        <img class="file-preview" id="filePreview" alt="">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Link (optional)</label>
+      <input class="form-input" id="mLink" type="url" placeholder="YouTube URL, Fiverr order, etc.">
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn-ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn-primary" onclick="saveMilestone()">Save Milestone</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── STATE ─────────────────────────────────────────────────────
+let milestones = [];
+let activeFilter = 'all';
+const STORAGE_KEY = 'kratos_milestones_v2';
+
+const TRACK_META = {
+  video: { label: 'Video Editing', color: '#a78bfa', bg: '#a78bfa14', border: '#a78bfa40', emoji: '🎬' },
+  yt:    { label: 'YouTube',       color: '#f472b6', bg: '#f472b614', border: '#f472b640', emoji: '▶️' },
+  forex: { label: 'Forex',         color: '#34d399', bg: '#34d39914', border: '#34d39940', emoji: '📈' },
+  ai:    { label: 'AI Agents',     color: '#fb923c', bg: '#fb923c14', border: '#fb923c40', emoji: '🤖' }
+};
+
+// ─── STORAGE ───────────────────────────────────────────────────
+async function loadMilestones() {
+  try {
+    const res = await window.storage.get(STORAGE_KEY);
+    if (res && res.value) {
+      milestones = JSON.parse(res.value);
+    }
+  } catch (e) {
+    milestones = [];
+  }
+  renderMilestones();
+}
+
+async function saveMilestones() {
+  try {
+    await window.storage.set(STORAGE_KEY, JSON.stringify(milestones));
+  } catch (e) {
+    console.error('Storage save failed', e);
+  }
+}
+
+// ─── RENDER ────────────────────────────────────────────────────
+function renderMilestones() {
+  const grid = document.getElementById('milestoneGrid');
+  const filtered = activeFilter === 'all'
+    ? milestones
+    : milestones.filter(m => m.track === activeFilter);
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-state-icon">${activeFilter === 'all' ? '🏆' : TRACK_META[activeFilter].emoji}</div>
+        <div class="empty-state-text">
+          <strong>No milestones yet</strong>
+          Hit "Add Milestone" to log your first win
+        </div>
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(m => {
+    const meta = TRACK_META[m.track];
+    const thumb = m.image
+      ? `<img class="ms-card-thumb" src="${m.image}" alt="${m.title}">`
+      : `<div class="ms-card-thumb-placeholder">${meta.emoji}</div>`;
+
+    const link = m.link
+      ? `<a class="ms-card-link" href="${m.link}" target="_blank" style="color:${meta.color}">
+           View ↗
+         </a>`
+      : '<span></span>';
+
+    return `
+      <div class="milestone-card" data-id="${m.id}">
+        ${thumb}
+        <div class="ms-card-body">
+          <div class="ms-card-track" style="color:${meta.color}; background:${meta.bg}; border:1px solid ${meta.border}">
+            ${meta.emoji} ${meta.label}
+          </div>
+          <div class="ms-card-title">${escHtml(m.title)}</div>
+          <div class="ms-card-desc">${escHtml(m.desc)}</div>
+          <div class="ms-card-footer">
+            <span class="ms-card-date">${m.date}</span>
+            ${link}
+          </div>
+        </div>
+        <button class="ms-card-delete" onclick="deleteMilestone('${m.id}')" title="Remove">✕</button>
+      </div>`;
+  }).join('');
+}
+
+function escHtml(str) {
+  return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ─── FILTER ────────────────────────────────────────────────────
+function setFilter(f, el) {
+  activeFilter = f;
+  document.querySelectorAll('.ftab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  renderMilestones();
+}
+
+// ─── MODAL ─────────────────────────────────────────────────────
+function openModal() {
+  document.getElementById('modalBackdrop').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modalBackdrop').classList.remove('open');
+  document.getElementById('mTitle').value = '';
+  document.getElementById('mDesc').value = '';
+  document.getElementById('mLink').value = '';
+  document.getElementById('mFile').value = '';
+  document.getElementById('filePreview').style.display = 'none';
+  document.querySelector('.file-area-text').style.display = 'block';
+}
+
+function handleBackdropClick(e) {
+  if (e.target === document.getElementById('modalBackdrop')) closeModal();
+}
+
+function previewFile(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const img = document.getElementById('filePreview');
+    img.src = ev.target.result;
+    img.style.display = 'block';
+    document.querySelector('.file-area-text').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+function saveMilestone() {
+  const title = document.getElementById('mTitle').value.trim();
+  const desc  = document.getElementById('mDesc').value.trim();
+  const track = document.getElementById('mTrack').value;
+  const link  = document.getElementById('mLink').value.trim();
+  const imgSrc = document.getElementById('filePreview').src;
+  const hasImage = document.getElementById('filePreview').style.display !== 'none';
+
+  if (!title) { showToast('Add a title first'); return; }
+
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+
+  milestones.unshift({
+    id: Date.now().toString(),
+    track, title, desc,
+    link: link || null,
+    image: hasImage ? imgSrc : null,
+    date: dateStr
+  });
+
+  saveMilestones();
+  renderMilestones();
+  closeModal();
+  showToast('Milestone saved ✓');
+
+  // Switch filter to all so they see it
+  setFilter('all', document.querySelector('.ftab[data-filter="all"]'));
+}
+
+async function deleteMilestone(id) {
+  milestones = milestones.filter(m => m.id !== id);
+  await saveMilestones();
+  renderMilestones();
+  showToast('Removed');
+}
+
+// ─── TOAST ─────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ─── CV DOWNLOAD ───────────────────────────────────────────────
+function downloadCV(e) {
+  e.preventDefault();
+
+  const cvContent = `KRATOS
+Video Editor · YouTube Creator · AI Automation Builder
+Lagos, Nigeria
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROFILE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Engineering student with a strong parallel focus on digital content
+creation, automation, and online income generation. I approach creative
+and technical work with the same rigour as my academic studies, building
+real skills through real projects — not just courses.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WHAT I DO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+VIDEO EDITING
+  · Editing long-form and short-form content using capcut
+  · Specialised in YouTube-style storytelling and recap video format
+  · Available for freelance projects and ongoing client work
+
+YOUTUBE AUTOMATION
+  · Running a movie recap channel with scripted AI-assisted voiceover
+  · Keyword research via TubeBuddy, SEO-optimised titles & thumbnails
+  · Targeting YouTube Partner Programme monetisation (2025)
+
+AI WORKFLOW AUTOMATION
+  · Building automations using Make.com and n8n
+  · Focus on practical tools for small businesses and content creators
+  · Available for freelance automation builds
+
+FOREX TRADING (Learning)
+  · Studying price action and Smart Money Concepts (SMC)
+  · Active demo trading with a structured trade journal
+  · Disciplined risk management approach (1% rule)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TOOLS & SKILLS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  · Capcut (Video Editing)
+  · ElevenLabs (AI Voiceover)
+  · TubeBuddy (YouTube SEO)
+  · Make.com / n8n (Automation)
+  · CapCut (Short-form Editing)
+  · HTML / CSS / JavaScript (Web Development)
+  · Quartus / FPGA (Academic — Digital Logic)
+  · VS Code
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EDUCATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+B.Eng. Engineering (In Progress)
+University — Lagos, Nigeria
+Relevant courses: Digital Logic, Computer Engineering, Statistics,
+Mathematics, Signals & Systems
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONTACT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Email    : your@email.com
+  YouTube  : youtube.com/yourchannel
+  Fiverr   : fiverr.com/yourprofile
+  Twitter  : twitter.com/yourhandle
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Generated ${new Date().toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric'})}
+`;
+
+  const blob = new Blob([cvContent], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'Kratos_CV_2025.txt';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('CV downloaded ✓');
+}
+
+// ─── INIT ──────────────────────────────────────────────────────
+loadMilestones();
+</script>
+</body>
+</html>
